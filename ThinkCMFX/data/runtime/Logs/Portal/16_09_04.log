@@ -1,0 +1,69 @@
+[ 2016-09-04T01:20:50+08:00 ] ::1 /ThinkCMFX/index.php?g=Portal&m=AdminPost&a=index&menuid=7
+NOTIC: D方法实例化没找到模型类Portal\Model\PostsModel
+
+[ 2016-09-04T01:27:21+08:00 ] ::1 /ThinkCMFX/index.php?g=Portal&m=AdminPost&a=index&menuid=7
+NOTIC: D方法实例化没找到模型类Portal\Model\PostsModel
+
+[ 2016-09-04T01:39:54+08:00 ] ::1 /ThinkCMFX/index.php?g=Portal&m=AdminPost&a=index&menuid=7
+NOTIC: D方法实例化没找到模型类Portal\Model\PostsModel
+
+[ 2016-09-04T01:55:31+08:00 ] ::1 /ThinkCMFX/index.php?g=Portal&m=AdminPost&a=index&menuid=7
+NOTIC: D方法实例化没找到模型类Portal\Model\PostsModel
+
+[ 2016-09-04T02:22:07+08:00 ] ::1 /ThinkCMFX/index.php?g=&m=AdminPost&a=edit&term=&id=3
+NOTIC: D方法实例化没找到模型类Portal\Model\PostsModel
+
+[ 2016-09-04T02:22:30+08:00 ] ::1 /ThinkCMFX/index.php?g=&m=AdminPost&a=edit_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000549s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000640s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001625s ]
+SQL: SHOW COLUMNS FROM `cmf_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `cmf_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: D方法实例化没找到模型类Portal\Model\PostsModel
+SQL: SHOW COLUMNS FROM `cmf_posts` [ RunTime:0.0027s ]
+SQL: SHOW COLUMNS FROM `cmf_terms` [ RunTime:0.0016s ]
+SQL: SHOW COLUMNS FROM `cmf_term_relationships` [ RunTime:0.0013s ]
+SQL: DELETE FROM `cmf_term_relationships` WHERE `object_id` = 3 AND `term_id` NOT IN ('2') [ RunTime:0.0008s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `cmf_term_relationships` WHERE `object_id` = 3 AND `term_id` = '2' LIMIT 1   [ RunTime:0.0002s ]
+SQL: UPDATE `cmf_term_relationships` SET `status`='1' WHERE `object_id` = 3 AND `term_id` = '2' [ RunTime:0.0001s ]
+SQL: UPDATE `cmf_posts` SET `post_title`='概述',`post_keywords`='',`post_source`='',`post_excerpt`='概述',`post_modified`='2016-08-31 01:51:59',`post_status`='1',`istop`='0',`recommended`='0',`post_content`='<p style=\"padding: 0px; margin-top: 0px; margin-bottom: 30px; font-family: 微软雅黑, 宋体; color: rgb(60, 60, 60); line-height: 32px; text-indent: 2em; white-space: normal; background-color: rgb(255, 255, 255);\">人口与健康科学数据共享平台（以下简称“人口健康平台”）工程技术中心，是国家科技基础条件平台——人口健康平台的技术支撑单位，主要承担人口健康平台的架构设计、技术研发、标准制定、应用服务等任务，保障人口健康平台的安全稳定运行。工程技术中心挂靠在中国医学科学院医学信息研究所，在人口健康平台管理中心领导下开展工作。</p><p style=\"padding: 0px; margin-top: 0px; margin-bottom: 30px; font-family: 微软雅黑, 宋体; color: rgb(60, 60, 60); line-height: 32px; text-indent: 2em; white-space: normal; background-color: rgb(255, 255, 255);\">中国医学科学院医学信息研究所将紧密围绕国家科技创新和医药卫生事业发展需要，做好顶层架构设计、先进技术研发、统一标准制定、资源整合与共享服务等工作，建成具有世界一流水准的国家级公益性、开放性的人口与健康科学数据共享平台，为政府决策、医药卫生、公众健康、人才培养、科技创新和产业发展提供权威、开放、便捷的数据资源和信息共享服务。</p><p><br/></p>',`smeta`='{\"thumb\":\"\"}' WHERE `id` = '3' [ RunTime:0.0003s ]
+
+[ 2016-09-04T02:47:03+08:00 ] ::1 /ThinkCMFX/index.php?g=Portal&m=AdminPost&a=index&menuid=7
+NOTIC: D方法实例化没找到模型类Portal\Model\PostsModel
+
+[ 2016-09-04T15:00:12+08:00 ] ::1 /ThinkCMFX/index.php?g=Portal&m=AdminPost&a=index&menuid=7
+NOTIC: D方法实例化没找到模型类Portal\Model\PostsModel
+
+[ 2016-09-04T15:02:51+08:00 ] ::1 /ThinkCMFX/index.php?g=Portal&m=AdminPost&a=index&menuid=7
+NOTIC: D方法实例化没找到模型类Portal\Model\PostsModel
+
+[ 2016-09-04T15:13:23+08:00 ] ::1 /ThinkCMFX/index.php?g=Portal&m=AdminPost&a=index&menuid=7
+NOTIC: D方法实例化没找到模型类Portal\Model\PostsModel
+
+[ 2016-09-04T15:14:18+08:00 ] ::1 /ThinkCMFX/index.php?g=Portal&m=AdminPost&a=index&menuid=7
+NOTIC: D方法实例化没找到模型类Portal\Model\PostsModel
+
+[ 2016-09-04T15:14:23+08:00 ] ::1 /ThinkCMFX/index.php?g=&m=AdminPost&a=add&term=
+NOTIC: D方法实例化没找到模型类Portal\Model\PostsModel
+
+[ 2016-09-04T15:16:24+08:00 ] ::1 /ThinkCMFX/index.php?g=&m=AdminPost&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000587s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000681s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001950s ]
+SQL: SHOW COLUMNS FROM `cmf_users` [ RunTime:0.0036s ]
+SQL: SELECT * FROM `cmf_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: D方法实例化没找到模型类Portal\Model\PostsModel
+SQL: SHOW COLUMNS FROM `cmf_posts` [ RunTime:0.0033s ]
+SQL: SHOW COLUMNS FROM `cmf_terms` [ RunTime:0.0018s ]
+SQL: SHOW COLUMNS FROM `cmf_term_relationships` [ RunTime:0.0012s ]
+SQL: INSERT INTO `cmf_posts` (`post_title`,`post_keywords`,`post_source`,`post_excerpt`,`post_modified`,`post_status`,`istop`,`recommended`,`post_content`,`post_date`,`post_author`,`smeta`) VALUES ('研究组织','','','研究组织','2016-09-04 15:14:23','1','0','0','<p>研究组织内容</p>','2016-09-04 15:16:24','1','{\"thumb\":\"\"}') [ RunTime:0.0018s ]
+SQL: INSERT INTO `cmf_term_relationships` (`term_id`,`object_id`) VALUES ('3','6') [ RunTime:0.0007s ]
+
+[ 2016-09-04T15:16:26+08:00 ] ::1 /ThinkCMFX/index.php?g=&m=AdminPost&a=add&term=
+NOTIC: D方法实例化没找到模型类Portal\Model\PostsModel
+
+[ 2016-09-04T15:16:29+08:00 ] ::1 /ThinkCMFX/index.php?g=Portal&m=AdminPost&a=index&menuid=7
+NOTIC: D方法实例化没找到模型类Portal\Model\PostsModel
+

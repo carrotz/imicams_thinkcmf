@@ -1,0 +1,22 @@
+{:hook('body_start')}
+<php>
+    $term_data = sp_get_term($term_id);
+    $term_articles = sp_sql_posts("cid:$term_id;field:post_title,post_excerpt,tid,smeta,term_id;");  
+</php>
+<div id="Head">
+  <div class="logo"><img src="__TMPL__Public/images/logo.gif" width="1000" height="138" /></div>
+</div>
+<div class="SubContainer">
+<div class="location">
+    <div class="left">
+      <a href="#">{$term_data[name]}</a>
+      > {$post_title}</div>
+    <div class="search">
+      <div class="searchbox">
+        <input name="" type="text" class="searchinput" />
+        <input type="button" class="searchbtn" value="搜索" />
+        <input type="button" class="searchbtngj" value="高级检索" />
+      </div>
+    </div>
+</div>
+</div>

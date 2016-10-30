@@ -1,0 +1,11 @@
+[ 2016-09-04T00:38:43+08:00 ] ::1 /ThinkCMFX/index.php?g=Admin&m=public&a=dologin
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000606s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000849s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001939s ]
+SQL: SHOW COLUMNS FROM `cmf_users` [ RunTime:0.0034s ]
+SQL: SELECT * FROM `cmf_users` WHERE `user_login` = 'admin' LIMIT 1   [ RunTime:0.0036s ]
+SQL: SHOW COLUMNS FROM `cmf_role_user` [ RunTime:0.0024s ]
+SQL: SELECT `role_id` FROM cmf_role_user a INNER JOIN cmf_role as b on a.role_id =b.id  WHERE `user_id` = '1' AND `status` = 1  [ RunTime:0.0021s ]
+SQL: UPDATE `cmf_users` SET `user_login`='admin',`user_pass`='###9ad0e52f693278af5ec12524ae3229cb',`user_nicename`='admin',`user_email`='fenglehuo@126.com',`user_url`='',`avatar`=NULL,`sex`='0',`birthday`=NULL,`signature`=NULL,`last_login_ip`='0.0.0.0',`last_login_time`='2016-09-04 00:38:43',`create_time`='2016-06-28 06:48:00',`user_activation_key`='',`user_status`='1',`score`='0',`user_type`='1',`coin`='0',`mobile`='' WHERE `id` = '1' [ RunTime:0.0004s ]
+

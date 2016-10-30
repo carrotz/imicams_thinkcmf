@@ -1,0 +1,32 @@
+[ 2016-08-31T02:55:01+08:00 ] ::1 /thinkcmfx/index.php?g=&m=article&a=do_like&id=3
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000629s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000647s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001757s ]
+
+[ 2016-08-31T02:59:07+08:00 ] ::1 /thinkcmfx/index.php?g=&m=AdminTerm&a=edit_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000522s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000671s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001598s ]
+SQL: SHOW COLUMNS FROM `cmf_users` [ RunTime:0.0043s ]
+SQL: SELECT * FROM `cmf_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cmf_terms` [ RunTime:0.0016s ]
+NOTIC: [8] Undefined index: validate /Applications/MAMP/htdocs/thinkcmfx/simplewind/Core/Library/Think/Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto /Applications/MAMP/htdocs/thinkcmfx/simplewind/Core/Library/Think/Model.class.php 第 1128 行.
+SQL: UPDATE `cmf_terms` SET `parent`='0',`name`='数字管理生命周期',`description`='',`taxonomy`='article',`seo_title`='',`seo_keywords`='',`seo_description`='',`list_tpl`='article',`one_tpl`='article' WHERE `term_id` = '2' [ RunTime:0.0004s ]
+SQL: UPDATE `cmf_terms` SET `path`='0-2' WHERE ( term_id=2 ) [ RunTime:0.0003s ]
+
+[ 2016-08-31T02:59:16+08:00 ] ::1 /thinkcmfx/index.php?g=&m=AdminTerm&a=edit_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001023s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001264s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002774s ]
+SQL: SHOW COLUMNS FROM `cmf_users` [ RunTime:0.0051s ]
+SQL: SELECT * FROM `cmf_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `cmf_terms` [ RunTime:0.0016s ]
+NOTIC: [8] Undefined index: validate /Applications/MAMP/htdocs/thinkcmfx/simplewind/Core/Library/Think/Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto /Applications/MAMP/htdocs/thinkcmfx/simplewind/Core/Library/Think/Model.class.php 第 1128 行.
+SQL: UPDATE `cmf_terms` SET `parent`='0',`name`='数字管理生命周期',`description`='',`taxonomy`='article',`seo_title`='',`seo_keywords`='',`seo_description`='',`list_tpl`='list',`one_tpl`='article' WHERE `term_id` = '2' [ RunTime:0.0003s ]
+SQL: UPDATE `cmf_terms` SET `path`='0-2' WHERE ( term_id=2 ) [ RunTime:0.0001s ]
+

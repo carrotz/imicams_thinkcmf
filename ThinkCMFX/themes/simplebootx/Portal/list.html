@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{$name} {$seo_title} {$site_name}</title>
+	<meta name="keywords" content="{$seo_keywords}" />
+	<meta name="description" content="{$seo_description}">
+    <tc_include file="Public:head" />
+    <link href="__TMPL__Public/css/webcss.css" rel="stylesheet">
+</head>
+<body>
+<tc_include file="Public:pageHeader" />
+<div class="ContentContainer">
+    <tc_include file="Public:nav" />
+    <div class="submain">
+      <div class="left">
+        <div class="subnav">
+          <div class="title">前沿动态</div>
+          <ul>
+            <li>
+              <a href="#">分类1</a>
+            </li>
+            <li class="current">
+              <a href="#">分类2</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="right">
+      
+      <ul class="newsList">
+        <li>
+          <div class="pic"><img src="images/pic.jpg" width="182" height="123" /></div>
+          <div class="info"><h3>人口健康平台工程技术中心2015年度工作总结交流会顺利召开</h3>
+          <span>2016年3月31日，国家卫生计生委委管出版物主题宣传项目2015年总结暨2016年启动会在北京隆重召开，我所承办期刊《医学信息学杂志》荣获2015年度主题宣传激励活动“最佳期刊”。《医学信息学杂志》是国内创刊最早的医学信息方面的专业指导性刊物，自创刊之日起始终恪守理论与实践相结合</span></div>
+        </li>
+        <li>
+          <div class="pic"><img src="images/pic.jpg" width="182" height="123" /></div>
+          <div class="info"><h3>人口健康平台工程技术中心2015年度工作总结交流会顺利召开</h3>
+          <span>2016年3月31日，国家卫生计生委委管出版物主题宣传项目2015年总结暨2016年启动会在北京隆重召开，我所承办期刊《医学信息学杂志》荣获2015年度主题宣传激励活动“最佳期刊”。《医学信息学杂志》是国内创刊最早的医学信息方面的专业指导性刊物，自创刊之日起始终恪守理论与实践相结</span></div>
+        </li>
+        <li>
+          <div class="pic"><img src="images/pic.jpg" width="182" height="123" /></div>
+          <div class="info"><h3>人口健康平台工程技术中心2015年度工作总结交流会顺利召开</h3>
+          <span>2016年3月31日，国家卫生计生委委管出版物主题宣传项目2015年总结暨2016年启动会在北京隆重召开，我所承办期刊《医学信息学杂志》荣获2015年度主题宣传激励活动“最佳期刊”。《医学信息学杂志》是国内创刊最早的医学信息方面的专业指导性刊物，自创刊之日起始终恪守理论与实践相结合、普及与提高相并重、倡导服务创新......
+推动事业发展的办刊宗旨。</span></div>
+        </li>
+      </ul>
+        <div class="pages"><span class="disabled">
+          <  Prev</span><span class="current">1</span>
+          <a href="#?page=2">2</a>
+          <a href="#?page=3">3</a>
+          <a href="#?page=4">4</a>
+          <a href="#?page=5">5</a>
+          <a href="#?page=6">6</a>
+          <a href="#?page=7">7</a>
+          ...
+          <a href="#?page=199">199</a>
+          <a href="#?page=200">200</a>
+          <a href="#?page=2">Next  >
+          </a>
+      </div>
+        
+      </div>
+    </div>
+</div>
+
+<div class="container tc-main">
+	
+	
+    <div class="pg-opt pin">
+        <div class="container">
+            <h2>{$name}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span9">
+			<div class="">
+				<php>
+					$lists = sp_sql_posts_paged("cid:$cat_id;order:post_date DESC;",10);
+					var_dump($lists);
+				</php>
+				<volist name="lists['posts']" id="vo">
+				<php>
+					$smeta=json_decode($vo['smeta'], true);
+				</php>
+				
+				<div class="list-boxes">
+					<h2><a href="{:leuu('article/index',array('id'=>$vo['tid'],'cid'=>$vo['term_id']))}">{$vo.post_title}</a></h2>
+					<p>{$vo.post_excerpt|msubstr=0,256}</p>
+					<div>
+						<div class="pull-left">
+							<div class="list-actions">
+							<a href="javascript:;"><i class="fa fa-eye"></i><span>{$vo.post_hits}</span></a>
+							<a href="{:U('article/do_like',array('id'=>$vo['object_id']))}" class="js-count-btn"><i class="fa fa-thumbs-up"></i><span class="count">{$vo.post_like}</span></a>
+							<a href="{:U('user/favorite/do_favorite',array('id'=>$vo['object_id']))}" class="js-favorite-btn" data-title="{$vo.post_title}" data-url="{:U('portal/article/index',array('id'=>$vo['tid']))}" data-key="{:sp_get_favorite_key('posts',$vo['object_id'])}">
+								<i class="fa fa-star-o"></i>
+							</a>
+							</div>
+						</div>
+						<a class="btn btn-warning pull-right" href="{:leuu('article/index',array('id'=>$vo['tid'],'cid'=>$vo['term_id']))}">查看更多</a>
+					</div>
+				</div>
+				</volist>
+				
+			</div>
+			<div class="pagination"><ul>{$lists['page']}</ul></div>
+		</div>
+    </div>
+    
+    
+    <tc_include file="Public:footer" />
+</div>
+
+    
+<!-- JavaScript -->
+<tc_include file="Public:scripts" />
+</body>
+</html>

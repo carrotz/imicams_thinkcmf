@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{$name} {$seo_title} {$site_name}</title>
+	<meta name="keywords" content="{$seo_keywords}" />
+	<meta name="description" content="{$seo_description}">
+    <tc_include file="Public:head" />
+    <link href="__TMPL__Public/css/webcss.css" rel="stylesheet">
+</head>
+<body>
+<tc_include file="Public:pageHeader" />
+<div class="ContentContainer">
+    <tc_include file="Public:nav" />
+    
+    <div class="submain">
+      <div class="left">
+        <div class="leftnav">
+          <div class="title">{$term_data[name]}</div>
+          <ul>
+            <foreach name="term_articles" item="vo">
+                <li>
+                  <a title="{$vo.post_title}" href="{:leuu('article/index',array('id'=>$vo['tid'],'cid'=>$vo['term_id']))}">{$vo.post_title}</a></li>
+                </li>
+            </foreach>
+          </ul>
+        </div>
+      </div>
+      <div class="right">
+        <div class="article">
+          <h1>{$post_title}</h1>
+          {$post_content}
+        </div>
+        <if condition="!empty($post_source)">
+            <div>
+                <b>注：本文转载自{$post_source}，转载目的在于传递更多信息，并不代表本网赞同其观点和对其真实性负责。如有侵权行为，请联系我们，我们会及时删除。</b>
+            </div>
+        </if>
+        <div>
+            <if condition="!empty($prev)">
+            <a href="{:leuu('article/index',array('id'=>$prev['tid'],'cid'=>$prev['term_id']))}" class="btn btn-primary pull-left">上一篇</a>
+            </if>
+            <if condition="!empty($next)">
+            <a href="{:leuu('article/index',array('id'=>$next['tid'],'cid'=>$next['term_id']))}" class="btn btn-warning pull-right">下一篇</a>
+            </if>
+            <script type="text/javascript" src="__TMPL__Public/js/qrcode.min.js"></script>
+            <div id="qrcode" style="width: 100px;margin:0 auto"></div>
+            <div class="clearfix"></div>
+        </div>
+
+
+        {:hook('comment',array(
+            'post_id'=>$object_id,
+            'post_table'=>'posts',
+            'post_title'=>$post_title
+        ))}
+      </div>
+    </div>
+</div>
+<tc_include file="Public:footer"/>
+
+<tc_include file="Public:scripts"/>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{:hook('body_start')}
+<div class="navbar navbar-fixed-top">
+   <div class="navbar-inner">
+     <div class="container">
+       <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </a>
+       <a class="brand" href="__ROOT__/">{$site_seo_title}</a>
+       <div class="nav-collapse collapse" id="main-menu">
+		
+		<div class="pull-right">
+        	<form method="post" class="form-inline" action="{:U('portal/search/index')}" style="margin:18px 0;">
+				 <input type="text" class="" placeholder="Search" name="keyword" value="{:I('get.keyword')}"/>
+				 <input type="submit" class="btn btn-info" value="Go" style="margin:0"/>
+			</form>
+		</div>
+       </div>
+     </div>
+   </div>
+ </div>
