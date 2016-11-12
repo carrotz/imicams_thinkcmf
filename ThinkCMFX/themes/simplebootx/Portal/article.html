@@ -20,7 +20,7 @@
           <ul>
             <foreach name="term_articles" item="vo">
                 <li>
-                  <a title="{$vo.post_title}" href="{:leuu('article/index',array('id'=>$vo['tid'],'cid'=>$vo['term_id']))}">{$vo.post_title}</a></li>
+                  <a title="{$vo.post_title}" href="{:leuu('article/index',array('id'=>$vo['tid'],'cid'=>$vo['term_id']))}">{$vo.post_title}</a>
                 </li>
             </foreach>
           </ul>

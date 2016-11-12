@@ -1,9 +1,11 @@
 <?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html>
+<?php $term_parent = sp_get_term($parent); $term_sons = sp_get_child_terms($parent); $post_list = sp_sql_posts_paged("cid:$cat_id;order:post_date DESC;",5); ?>
+
 <head>
-	<title><?php echo ($name); ?> <?php echo ($seo_title); ?> <?php echo ($site_name); ?></title>
-	<meta name="keywords" content="<?php echo ($seo_keywords); ?>" />
-	<meta name="description" content="<?php echo ($seo_description); ?>">
+    <title><?php echo ($name); ?> <?php echo ($seo_title); ?> <?php echo ($site_name); ?></title>
+    <meta name="keywords" content="<?php echo ($seo_keywords); ?>" />
+    <meta name="description" content="<?php echo ($seo_description); ?>">
     	<?php  function _sp_helloworld(){ echo "hello ThinkCMF!"; } function _sp_helloworld2(){ echo "hello ThinkCMF2!"; } function _sp_helloworld3(){ echo "hello ThinkCMF3!"; } ?>
 	<?php $portal_index_lastnews="1,2"; $portal_hot_articles="1,2"; $portal_last_post="1,2"; $tmpl=sp_get_theme_path(); $default_home_slides=array( array( "slide_name"=>"ThinkCMFX2.1.0发布啦！", "slide_pic"=>$tmpl."Public/images/demo/1.jpg", "slide_url"=>"", ), array( "slide_name"=>"ThinkCMFX2.1.0发布啦！", "slide_pic"=>$tmpl."Public/images/demo/2.jpg", "slide_url"=>"", ), array( "slide_name"=>"ThinkCMFX2.1.0发布啦！", "slide_pic"=>$tmpl."Public/images/demo/3.jpg", "slide_url"=>"", ), ); ?>
 	<meta name="author" content="ThinkCMF">
@@ -39,28 +41,32 @@
 	
     <link href="/ThinkCMFX/themes/simplebootx/Public/css/webcss.css" rel="stylesheet">
 </head>
+
 <body>
-<?php echo hook('body_start');?>
+    <?php echo hook('body_start');?>
 <?php $term_data = sp_get_term($term_id); $term_articles = sp_sql_posts("cid:$term_id;field:post_title,post_excerpt,tid,smeta,term_id;"); ?>
 <div id="Head">
-  <div class="logo"><img src="/ThinkCMFX/themes/simplebootx/Public/images/logo.gif" width="1000" height="138" /></div>
+    <div class="logo"><img src="/ThinkCMFX/themes/simplebootx/Public/images/logo.gif" width="1000" height="138" /></div>
 </div>
 <div class="SubContainer">
-<div class="location">
-    <div class="left">
-      <a href="#"><?php echo ($term_data[name]); ?></a>
-      > <?php echo ($post_title); ?></div>
-    <div class="search">
-      <div class="searchbox">
-        <input name="" type="text" class="searchinput" />
-        <input type="button" class="searchbtn" value="搜索" />
-        <input type="button" class="searchbtngj" value="高级检索" />
-      </div>
+    <div class="location">
+        <div class="left">
+            <a href="#"><?php echo ($term_data[name]); ?></a>
+            <?php if($post_title): ?>> <?php echo ($post_title); endif; ?>
+        </div>
+        <form method="post" action="/ThinkCMFX/search.php">
+            <div class="search">
+                <div class="searchbox">
+                    <input type="text" style="padding: 0 5px; width: 430px; line-height: 40px; border: 0; height: 40px; float: left;" placeholder="请输入关键字" name="keyword" />
+                    <input type="submit" value="搜索" style="font-size: 14px; float: left; background: url(/ThinkCMFX/themes/simplebootx/Public/images/icon_search.gif) no-repeat 20px 10px #28bc94; height: 40px; padding-left: 30px; line-height: 40px; color: #fff; width: 110px; border: 0; cursor: pointer" />
+                    <!--                <input type="button" class="searchbtngj" value="高级检索" />-->
+                </div>
+            </div>
+        </form>
     </div>
 </div>
-</div>
-<div class="ContentContainer">
-    <div class="cont Submenu">
+    <div class="ContentContainer">
+        <div class="cont Submenu">
   <ul class="subm_li">
     <li class="sy">
       <a href="/ThinkCMFX">
@@ -69,7 +75,7 @@
       </a>
     </li>
     <li class="qydt">
-      <a href="/ThinkCMFX/index.php?g=portal&m=list&a=index&id=9">
+      <a href="/ThinkCMFX/index.php?g=&m=list&a=index&id=12">
       <div><img src="/ThinkCMFX/themes/simplebootx/Public/images/icon_qydt.gif" width="26" height="26" /></div>
       <h2>前沿动态</h2>
       </a>
@@ -87,7 +93,7 @@
       </a>
     </li>
     <li class="sjglsmzq">
-      <a href="/ThinkCMFX/index.php?g=portal&m=list&a=index&id=2">
+      <a href="/ThinkCMFX/index.php?g=portal&m=article&a=index&id=3">
       <div><img src="/ThinkCMFX/themes/simplebootx/Public/images/icon_sjglsmzq.gif" width="26" height="26" /></div>
       <h2>数据管理生命周期</h2>
       </a>
@@ -144,96 +150,44 @@
     </div>
 </div>-->
 
-    <div class="submain">
-      <div class="left">
-        <div class="subnav">
-          <div class="title">前沿动态</div>
-          <ul>
-            <li>
-              <a href="#">分类1</a>
-            </li>
-            <li class="current">
-              <a href="#">分类2</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="right">
-      
-      <ul class="newsList">
-        <li>
-          <div class="pic"><img src="images/pic.jpg" width="182" height="123" /></div>
-          <div class="info"><h3>人口健康平台工程技术中心2015年度工作总结交流会顺利召开</h3>
-          <span>2016年3月31日，国家卫生计生委委管出版物主题宣传项目2015年总结暨2016年启动会在北京隆重召开，我所承办期刊《医学信息学杂志》荣获2015年度主题宣传激励活动“最佳期刊”。《医学信息学杂志》是国内创刊最早的医学信息方面的专业指导性刊物，自创刊之日起始终恪守理论与实践相结合</span></div>
-        </li>
-        <li>
-          <div class="pic"><img src="images/pic.jpg" width="182" height="123" /></div>
-          <div class="info"><h3>人口健康平台工程技术中心2015年度工作总结交流会顺利召开</h3>
-          <span>2016年3月31日，国家卫生计生委委管出版物主题宣传项目2015年总结暨2016年启动会在北京隆重召开，我所承办期刊《医学信息学杂志》荣获2015年度主题宣传激励活动“最佳期刊”。《医学信息学杂志》是国内创刊最早的医学信息方面的专业指导性刊物，自创刊之日起始终恪守理论与实践相结</span></div>
-        </li>
-        <li>
-          <div class="pic"><img src="images/pic.jpg" width="182" height="123" /></div>
-          <div class="info"><h3>人口健康平台工程技术中心2015年度工作总结交流会顺利召开</h3>
-          <span>2016年3月31日，国家卫生计生委委管出版物主题宣传项目2015年总结暨2016年启动会在北京隆重召开，我所承办期刊《医学信息学杂志》荣获2015年度主题宣传激励活动“最佳期刊”。《医学信息学杂志》是国内创刊最早的医学信息方面的专业指导性刊物，自创刊之日起始终恪守理论与实践相结合、普及与提高相并重、倡导服务创新......
-推动事业发展的办刊宗旨。</span></div>
-        </li>
-      </ul>
-        <div class="pages"><span class="disabled">
-          <  Prev</span><span class="current">1</span>
-          <a href="#?page=2">2</a>
-          <a href="#?page=3">3</a>
-          <a href="#?page=4">4</a>
-          <a href="#?page=5">5</a>
-          <a href="#?page=6">6</a>
-          <a href="#?page=7">7</a>
-          ...
-          <a href="#?page=199">199</a>
-          <a href="#?page=200">200</a>
-          <a href="#?page=2">Next  >
-          </a>
-      </div>
-        
-      </div>
-    </div>
-</div>
+        <div class="submain">
+            <div class="left">
+                <div class="leftnav">
+                    <div class="title">
+                        <?php echo ($term_parent["name"]); ?>
+                    </div>
+                    <ul>
+                        <?php if(is_array($term_sons)): foreach($term_sons as $key=>$vo): if($vo['term_id'] == $term_id): ?><li class="current"><a title="<?php echo ($vo['name']); ?>" href="<?php echo leuu('list/index',array('id'=>$vo['term_id']));?>"><?php echo ($vo["name"]); ?></a></li>
+                            <?php else: ?> 
+                            <li><a title="<?php echo ($vo['name']); ?>" href="<?php echo leuu('list/index',array('id'=>$vo['term_id']));?>"><?php echo ($vo["name"]); ?></a></li><?php endif; endforeach; endif; ?>
+                    </ul>
+                </div>
+            </div>
+            <div class="right">
+                <?php if(is_array($post_list['posts'])): $i = 0; $__LIST__ = $post_list['posts'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i; $smeta=json_decode($vo['smeta'], true); ?>
 
-<div class="container tc-main">
-	
-	
-    <div class="pg-opt pin">
-        <div class="container">
-            <h2><?php echo ($name); ?></h2>
+                    <div class="list-boxes">
+                        <h3><a href="<?php echo leuu('article/index',array('id'=>$vo['tid']));?>"><?php echo ($vo["post_title"]); ?></a></h3>
+                        <p><?php echo ($vo["post_excerpt"]); ?></p>
+                        <div>
+                            <div class="pull-left">
+                                <div class="list-actions">
+                                    <a href="javascript:;"><i class="fa fa-eye"></i><span><?php echo ($vo["post_hits"]); ?></span></a>
+                                    <a href="javascript:;" class="margin-left-10"><span><?php echo ($vo["post_date"]); ?></span></a>
+                                </div>
+                            </div>
+                            <a class="btn btn-warning pull-right" href="<?php echo leuu('article/index',array('id'=>$vo['tid']));?>">查看更多</a>
+                        </div>
+                    </div><?php endforeach; endif; else: echo "" ;endif; ?>
+                
+                <div class="pagination">
+                    <ul>
+                    <?php echo ($post_list['page']); ?>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="span9">
-			<div class="">
-				<?php $lists = sp_sql_posts_paged("cid:$cat_id;order:post_date DESC;",10); var_dump($lists); ?>
-				<?php if(is_array($lists['posts'])): $i = 0; $__LIST__ = $lists['posts'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i; $smeta=json_decode($vo['smeta'], true); ?>
-				
-				<div class="list-boxes">
-					<h2><a href="<?php echo leuu('article/index',array('id'=>$vo['tid'],'cid'=>$vo['term_id']));?>"><?php echo ($vo["post_title"]); ?></a></h2>
-					<p><?php echo (msubstr($vo["post_excerpt"],0,256)); ?></p>
-					<div>
-						<div class="pull-left">
-							<div class="list-actions">
-							<a href="javascript:;"><i class="fa fa-eye"></i><span><?php echo ($vo["post_hits"]); ?></span></a>
-							<a href="<?php echo U('article/do_like',array('id'=>$vo['object_id']));?>" class="js-count-btn"><i class="fa fa-thumbs-up"></i><span class="count"><?php echo ($vo["post_like"]); ?></span></a>
-							<a href="<?php echo U('user/favorite/do_favorite',array('id'=>$vo['object_id']));?>" class="js-favorite-btn" data-title="<?php echo ($vo["post_title"]); ?>" data-url="<?php echo U('portal/article/index',array('id'=>$vo['tid']));?>" data-key="<?php echo sp_get_favorite_key('posts',$vo['object_id']);?>">
-								<i class="fa fa-star-o"></i>
-							</a>
-							</div>
-						</div>
-						<a class="btn btn-warning pull-right" href="<?php echo leuu('article/index',array('id'=>$vo['tid'],'cid'=>$vo['term_id']));?>">查看更多</a>
-					</div>
-				</div><?php endforeach; endif; else: echo "" ;endif; ?>
-				
-			</div>
-			<div class="pagination"><ul><?php echo ($lists['page']); ?></ul></div>
-		</div>
-    </div>
-    
-    
     <?php echo hook('footer');?>
 <div id="footer">
     <a target="_blank" href="http://www.imicams.ac.cn/">© 中国医学科学院医学信息研究所 </a>
@@ -243,11 +197,10 @@
 </div>
 <?php echo ($site_tongji); ?>
 
-</div>
 
-    
-<!-- JavaScript -->
-<script type="text/javascript">
+
+    <!-- JavaScript -->
+    <script type="text/javascript">
 //全局变量
 var GV = {
     DIMAUB: "/ThinkCMFX/",
@@ -324,4 +277,5 @@ var GV = {
 
 
 </body>
+
 </html>

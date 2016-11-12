@@ -1,22 +1,26 @@
 {:hook('body_start')}
 <php>
-    $term_data = sp_get_term($term_id);
-    $term_articles = sp_sql_posts("cid:$term_id;field:post_title,post_excerpt,tid,smeta,term_id;");  
+    $term_data = sp_get_term($term_id); $term_articles = sp_sql_posts("cid:$term_id;field:post_title,post_excerpt,tid,smeta,term_id;");
 </php>
 <div id="Head">
-  <div class="logo"><img src="__TMPL__Public/images/logo.gif" width="1000" height="138" /></div>
+    <div class="logo"><img src="__TMPL__Public/images/logo.gif" width="1000" height="138" /></div>
 </div>
 <div class="SubContainer">
-<div class="location">
-    <div class="left">
-      <a href="#">{$term_data[name]}</a>
-      > {$post_title}</div>
-    <div class="search">
-      <div class="searchbox">
-        <input name="" type="text" class="searchinput" />
-        <input type="button" class="searchbtn" value="搜索" />
-        <input type="button" class="searchbtngj" value="高级检索" />
-      </div>
+    <div class="location">
+        <div class="left">
+            <a href="#">{$term_data[name]}</a>
+            <if condition="$post_title">
+                > {$post_title}
+            </if>
+        </div>
+        <form method="post" action="__ROOT__/search.php">
+            <div class="search">
+                <div class="searchbox">
+                    <input type="text" style="padding: 0 5px; width: 430px; line-height: 40px; border: 0; height: 40px; float: left;" placeholder="请输入关键字" name="keyword" />
+                    <input type="submit" value="搜索" style="font-size: 14px; float: left; background: url(__TMPL__Public/images/icon_search.gif) no-repeat 20px 10px #28bc94; height: 40px; padding-left: 30px; line-height: 40px; color: #fff; width: 110px; border: 0; cursor: pointer" />
+                    <!--                <input type="button" class="searchbtngj" value="高级检索" />-->
+                </div>
+            </div>
+        </form>
     </div>
-</div>
 </div>

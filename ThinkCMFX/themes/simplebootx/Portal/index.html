@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+<php>
+    $news_list = sp_sql_posts_paged_bycatid(9,"",6);
+</php>
 
 <head>
     <title>{$site_seo_title} {$site_name}</title>
@@ -11,67 +14,7 @@
     <link href="__TMPL__Public/css/webcss.css" rel="stylesheet">
     <script src="__PUBLIC__/js/jquery-1.8.3.min.js"></script>
     <script src="__PUBLIC__/js/koala.min.1.5.js"></script>
-    <style>
-        .search {
-            background: #fff;
-            border: #cdceca 1px solid;
-            margin-left: 10px;
-            width: 550px;
-            margin-top: 12px;
-            float: left;
-        }
-        
-        .searchbox {
-            background: #fff;
-            height: 40px;
-            line-height: 40px;
-            overflow: hidden;
-        }
-        
-        .searchinput {
-            padding: 0 5px;
-            width: 320px;
-            line-height: 40px;
-            border: 0;
-            height: 40px;
-            float: left;
-        }
-        
-        .searchbtn {
-            font-family: "微软雅黑", "宋体";
-            font-size: 14px;
-            float: left;
-            background: url(../images/icon_search.gif) no-repeat 20px 10px #28bc94;
-            height: 40px;
-            padding-left: 30px;
-            line-height: 40px;
-            color: #fff;
-            width: 110px;
-            border: 0;
-            cursor: pointer
-        }
-        
-        .searchbtngj {
-            font-family: "微软雅黑", "宋体";
-            font-size: 14px;
-            float: left;
-            background: #ff9920;
-            height: 40px;
-            line-height: 40px;
-            color: #fff;
-            width: 110px;
-            border: 0;
-            cursor: pointer
-        }
-        
-        .searchbtn:hover {
-            background-color: #1daf87;
-        }
-        
-        .searchbtngj:hover {
-            background-color: #fc8d09;
-        }
-    </style>
+
 
 </head>
 
@@ -92,13 +35,16 @@
             </ul>
         </div>
 
-        <div class="search">
-            <div class="searchbox">
-                <input name="" type="text" class="searchinput" />
-                <input type="button" class="searchbtn" value="搜索" />
-                <input type="button" class="searchbtngj" value="高级检索" />
+        <form method="post" action="__ROOT__/search.php">
+            <div class="search">
+                <div class="searchbox">
+                    <input type="text" style="padding: 0 5px; width: 430px; line-height: 40px; border: 0; height: 40px; float: left;" placeholder="请输入关键字" name="keyword" />
+                    <input type="submit" value="搜索" style="font-size: 14px; float: left; background: url(__TMPL__Public/images/icon_search.gif) no-repeat 20px 10px #28bc94; height: 40px; padding-left: 30px; line-height: 40px; color: #fff; width: 110px; border: 0; cursor: pointer"/>
+                    <!--                <input type="button" class="searchbtngj" value="高级检索" />-->
+                </div>
             </div>
-        </div>
+        </form> 
+        
     </div>
     <div class="MainContainer">
         <div class="ContentContainer">
@@ -157,29 +103,16 @@
                     <div class="homebox">
                         <div class="title">
                             <h3>
-              <div>前沿动态</div>
-            </h3>
+                              <div><a href="__ROOT__/index.php?g=&m=list&a=index&id=12">前沿动态</a></div>
+                            </h3>
                         </div>
                         <div class="content">
                             <ul class="list_r1">
-                                <li>
-                                    <a href="#">人口健康平台工程技术中心2015年度工作总结交流...</a>
-                                </li>
-                                <li>
-                                    <a href="#">人口健康平台科技资源标识规范推广培训在京顺利..</a>
-                                </li>
-                                <li>
-                                    <a href="#">人口健康平台工程技术中心与桂林理工大学环境科...</a>
-                                </li>
-                                <li>
-                                    <a href="#">人口健康平台标准修订草案专家咨询会顺利召开</a>
-                                </li>
-                                <li>
-                                    <a href="#">人口健康平台工程技术中心2015年2015年度工作总结交流2015年度工作总结交流度工作总结交流...</a>
-                                </li>
-                                <li>
-                                    <a href="#">人口健康平台科技资源标识规范推广培训在京顺利..</a>
-                                </li>
+                                <volist name="news_list['posts']" id="vo">
+                                    <li>
+                                        <a href="{:leuu('article/index',array('id'=>$vo['tid']))}">{$vo.post_title}</a>
+                                    </li>
+                                </volist>
                             </ul>
                         </div>
                     </div>

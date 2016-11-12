@@ -167,7 +167,6 @@ line-height: 24px;
 .list-boxes {
   overflow: hidden;
   padding: 15px 20px;
-  margin-bottom: 25px;
   background: #fff;
   -webkit-transition:all 0.3s ease-in-out;
   -moz-transition:all 0.3s ease-in-out;
@@ -180,7 +179,8 @@ line-height: 24px;
 }
 
 .list-boxes:hover{
-border-top: solid 2px #f90;
+/*border-bottom: solid 2px #f90;*/
+    background-color: rgb(241, 250, 232);
 }
 
 .list-boxes h2 a {

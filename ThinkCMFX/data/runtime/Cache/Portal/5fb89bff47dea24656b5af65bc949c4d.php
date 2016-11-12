@@ -1,10 +1,11 @@
 <?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
-<!DOCTYPE html>
 <html>
+<?php $result=sp_sql_posts_paged_bykeyword($keyword,"",10); ?>
+
 <head>
-	<title><?php echo ($name); ?> <?php echo ($seo_title); ?> <?php echo ($site_name); ?></title>
-	<meta name="keywords" content="<?php echo ($seo_keywords); ?>" />
-	<meta name="description" content="<?php echo ($seo_description); ?>">
+    <title>搜索 <?php echo ($site_name); ?> </title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="">
     	<?php  function _sp_helloworld(){ echo "hello ThinkCMF!"; } function _sp_helloworld2(){ echo "hello ThinkCMF2!"; } function _sp_helloworld3(){ echo "hello ThinkCMF3!"; } ?>
 	<?php $portal_index_lastnews="1,2"; $portal_hot_articles="1,2"; $portal_last_post="1,2"; $tmpl=sp_get_theme_path(); $default_home_slides=array( array( "slide_name"=>"ThinkCMFX2.1.0发布啦！", "slide_pic"=>$tmpl."Public/images/demo/1.jpg", "slide_url"=>"", ), array( "slide_name"=>"ThinkCMFX2.1.0发布啦！", "slide_pic"=>$tmpl."Public/images/demo/2.jpg", "slide_url"=>"", ), array( "slide_name"=>"ThinkCMFX2.1.0发布啦！", "slide_pic"=>$tmpl."Public/images/demo/3.jpg", "slide_url"=>"", ), ); ?>
 	<meta name="author" content="ThinkCMF">
@@ -40,8 +41,9 @@
 	
     <link href="/ThinkCMFX/themes/simplebootx/Public/css/webcss.css" rel="stylesheet">
 </head>
+
 <body>
-<?php echo hook('body_start');?>
+    <?php echo hook('body_start');?>
 <?php $term_data = sp_get_term($term_id); $term_articles = sp_sql_posts("cid:$term_id;field:post_title,post_excerpt,tid,smeta,term_id;"); ?>
 <div id="Head">
     <div class="logo"><img src="/ThinkCMFX/themes/simplebootx/Public/images/logo.gif" width="1000" height="138" /></div>
@@ -63,8 +65,8 @@
         </form>
     </div>
 </div>
-<div class="ContentContainer">
-    <div class="cont Submenu">
+    <div class="ContentContainer">
+        <div class="cont Submenu">
   <ul class="subm_li">
     <li class="sy">
       <a href="/ThinkCMFX">
@@ -148,40 +150,35 @@
     </div>
 </div>-->
 
-    
-    <div class="submain">
-      <div class="left">
-        <div class="leftnav">
-          <div class="title"><?php echo ($term_data[name]); ?></div>
-          <ul>
-            <?php if(is_array($term_articles)): foreach($term_articles as $key=>$vo): ?><li>
-                  <a title="<?php echo ($vo["post_title"]); ?>" href="<?php echo leuu('article/index',array('id'=>$vo['tid'],'cid'=>$vo['term_id']));?>"><?php echo ($vo["post_title"]); ?></a>
-                </li><?php endforeach; endif; ?>
-          </ul>
-        </div>
-      </div>
-      <div class="right">
-        <div class="article">
-          <h1><?php echo ($post_title); ?></h1>
-          <?php echo ($post_content); ?>
-        </div>
-        <?php if(!empty($post_source)): ?><div>
-                <b>注：本文转载自<?php echo ($post_source); ?>，转载目的在于传递更多信息，并不代表本网赞同其观点和对其真实性负责。如有侵权行为，请联系我们，我们会及时删除。</b>
-            </div><?php endif; ?>
-        <div>
-            <?php if(!empty($prev)): ?><a href="<?php echo leuu('article/index',array('id'=>$prev['tid'],'cid'=>$prev['term_id']));?>" class="btn btn-primary pull-left">上一篇</a><?php endif; ?>
-            <?php if(!empty($next)): ?><a href="<?php echo leuu('article/index',array('id'=>$next['tid'],'cid'=>$next['term_id']));?>" class="btn btn-warning pull-right">下一篇</a><?php endif; ?>
-            <script type="text/javascript" src="/ThinkCMFX/themes/simplebootx/Public/js/qrcode.min.js"></script>
-            <div id="qrcode" style="width: 100px;margin:0 auto"></div>
-            <div class="clearfix"></div>
-        </div>
+        <div class="submain">
+            <div class="result">
+                <div class="count"> '<?php echo ($keyword); ?>' 搜索结果 共 <strong><?php echo ($result['count']); ?></strong> 条</div>
+            </div>
+            <div class="search-result-list">
+                <?php if(is_array($result['posts'])): $i = 0; $__LIST__ = $result['posts'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i; $smeta=json_decode($vo['smeta'], true); ?>
 
-
-        <?php echo hook('comment',array( 'post_id'=>$object_id, 'post_table'=>'posts', 'post_title'=>$post_title ));?>
-      </div>
+                    <div class="list-boxes">
+                        <h3><a href="<?php echo leuu('article/index',array('id'=>$vo['tid']));?>"><?php echo ($vo["post_title"]); ?></a></h3>
+                        <p><?php echo ($vo["post_excerpt"]); ?></p>
+                        <div>
+                            <div class="pull-left">
+                                <div class="list-actions">
+                                    <a href="javascript:;"><i class="fa fa-eye"></i><span><?php echo ($vo["post_hits"]); ?></span></a>
+                                    <a href="javascript:;" class="margin-left-10"><span><?php echo ($vo["post_date"]); ?></span></a>
+                                </div>
+                            </div>
+                            <a class="btn btn-warning pull-right" href="<?php echo leuu('article/index',array('id'=>$vo['tid']));?>">查看更多</a>
+                        </div>
+                    </div><?php endforeach; endif; else: echo "" ;endif; ?>
+                <div class="pagination">
+                    <ul>
+                        <?php echo ($result['page']); ?>
+                    </ul>
+                </div>
+            </div>    
+        </div>
     </div>
-</div>
-<?php echo hook('footer');?>
+    <?php echo hook('footer');?>
 <div id="footer">
     <a target="_blank" href="http://www.imicams.ac.cn/">© 中国医学科学院医学信息研究所 </a>
 </div>
@@ -191,7 +188,9 @@
 <?php echo ($site_tongji); ?>
 
 
-<script type="text/javascript">
+
+    <!-- JavaScript -->
+    <script type="text/javascript">
 //全局变量
 var GV = {
     DIMAUB: "/ThinkCMFX/",
@@ -268,4 +267,5 @@ var GV = {
 
 
 </body>
+
 </html>
