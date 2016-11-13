@@ -105,13 +105,13 @@
       </a>
     </li>
     <li class="glgj">
-      <a href="/ThinkCMFX/index.php?g=portal&m=list&a=index&id=6">
+      <a href="/ThinkCMFX/index.php?g=portal&m=article&a=index&id=24">
       <div><img src="/ThinkCMFX/themes/simplebootx/Public/images/icon_glgj.gif" width="26" height="26" /></div>
       <h2>管理工具</h2>
       </a>
     </li>
     <li class="sjbz">
-      <a href="/ThinkCMFX/index.php?g=portal&m=list&a=index&id=10">
+      <a href="/ThinkCMFX/index.php?g=portal&m=article&a=index&id=22">
       <div><img src="/ThinkCMFX/themes/simplebootx/Public/images/icon_sjbz.gif" width="26" height="26" /></div>
       <h2>数据标准</h2>
       </a>

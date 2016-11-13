@@ -975,6 +975,10 @@ div.pages span.disabled {
     padding-left: 14px;
 }
 
+.article {
+    min-height: 400px;
+}
+
 .article h1 {
     font-size: 22px;
     font-weight: bold;
